@@ -14,6 +14,6 @@ const atbashMap = Object.fromEntries(
   }),
 )
 
-export function atbashEncode(input) {
+export function atbash(input) {
   return cipher(input, atbashMap)
 }
