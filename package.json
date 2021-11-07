@@ -6,13 +6,17 @@
   "type": "module",
   "scripts": {
     "start": "node ./index.js",
+    "format": "prettier --write \"**/*.+(js|json|css|html|md)\"",
     "format:check": "prettier --list-different \"**/*.+(js|json|css|html|md)\"",
     "lint:check": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pre-commit-hook": "lint-staged",
+    "githook:init": "echo \"#!/bin/sh \n\nnpm run pre-commit-hook \" > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit",
+    "postinstall": "npm run githook:init"
   },
   "lint-staged": {
     "**/*.+(js|json|css|html|md)": [
-      "prettier --list-difference"
+      "prettier --list-different"
     ],
     "**/*.+(js)": [
       "eslint"
