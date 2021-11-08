@@ -20,7 +20,7 @@ function createShiftMap(shift) {
   )
 }
 
-export function caesar(shift = 3) {
+export function caesar(shift = 1) {
   const encodeMap = createShiftMap(shift)
   const decodeMap = createShiftMap(-shift)
 
