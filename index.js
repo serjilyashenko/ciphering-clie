@@ -20,13 +20,24 @@ readStream.pipe(writeStream)
 
 const program = new Command()
 program
-  .option('-d, --debug', 'output extra debugging')
-  .option('-s, --small', 'small pizza size')
-  .option('-p, --pizza-type <type>', 'flavour of pizza')
-  .option('-c, --cheese <type>', 'add the specified type of cheese', 'blue')
+  .requiredOption(
+    '-c, --config <cipher>',
+    'ciphers Config is a string with pattern {XY(-)}n, where:\n' +
+      'X is a cipher mark:\n' +
+      '◦ C is for Caesar cipher (with shift 1)\n' +
+      '◦ A is for Atbash cipher\n' +
+      '◦ R is for ROT-8 cipher\n' +
+      'Y is flag of encoding or decoding (mandatory for Caesar cipher and ROT-8 cipher and should not be passed Atbash cipher)\n' +
+      '◦ 1 is for encoding\n' +
+      '◦ 0 is for decoding',
+  )
+  .option('-i, --input <path>', 'a path to input file')
+  .option('-o, --output <path>', 'a path to output file')
 
 program.parse()
 
 console.log('_________')
 
 console.log(JSON.stringify(program.opts(), null, 2))
+
+console.log('>>', fs.existsSync('./input.txt'))
