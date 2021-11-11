@@ -9,7 +9,7 @@ function createShiftMap(shift) {
       const shiftIndex = (index + shift) % alphabetArray.length
 
       const encodedLetter = alphabet
-        .slice(shiftIndex, shiftIndex + 1)
+        .slice(shiftIndex, shiftIndex + 1 || undefined)
         .toLowerCase()
 
       return [
