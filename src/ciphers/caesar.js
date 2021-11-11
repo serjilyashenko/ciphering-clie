@@ -21,8 +21,8 @@ function createShiftMap(shift) {
 }
 
 export function caesar(shift = 1) {
-  const encodeMap = createShiftMap(shift)
-  const decodeMap = createShiftMap(-shift)
+  const encodeMap = createShiftMap(-shift)
+  const decodeMap = createShiftMap(shift)
 
   return {
     encode: input => cipher(input, encodeMap),
