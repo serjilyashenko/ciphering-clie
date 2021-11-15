@@ -21,3 +21,7 @@ config
     inputStream,
   )
   .pipe(createOutputStream(output))
+  .on('error', () => {
+    process.stderr.write('>> write stream error')
+    process.exit(1)
+  })
