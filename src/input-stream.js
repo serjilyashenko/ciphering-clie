@@ -6,7 +6,8 @@ export function createInputStream(input) {
   }
 
   if (!fs.existsSync(input)) {
-    throw new Error(`>> ${input} - file is not exists`)
+    console.error(`>> ${input} - file is not exists`)
+    process.exit(2)
   }
 
   return fs.createReadStream(input)
