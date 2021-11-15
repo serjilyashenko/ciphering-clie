@@ -6,7 +6,7 @@ import {createOutputStream} from './src/output-stream.js'
 const {input, output, config} = programOptions
 
 const inputStream = createInputStream(input).on('error', () => {
-  process.stderr.write('>> ciphering error')
+  process.stderr.write('>> read stream error')
   process.exit(1)
 })
 
