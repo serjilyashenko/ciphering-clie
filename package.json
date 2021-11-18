@@ -6,10 +6,11 @@
   "type": "module",
   "scripts": {
     "start": "node ./index.js",
-    "format": "prettier --write \"**/*.+(js|json|css|html|md)\"",
-    "format:check": "prettier --list-different \"**/*.+(js|json|css|html|md)\"",
-    "lint:check": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|css|html|md)\"",
+    "format:check": "prettier --ignore-path .gitignore --list-different \"**/*.+(js|json|css|html|md)\"",
+    "lint:check": "eslint --ignore-path .gitignore .",
+    "test": "jest --watch",
+    "test:coverage": "jest --coverage",
     "pre-commit-hook": "lint-staged",
     "githook:init": "echo \"#!/bin/sh \n\nnpm run pre-commit-hook \" > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit",
     "postinstall": "npm run githook:init"
@@ -20,6 +21,9 @@
     ],
     "**/*.+(js)": [
       "eslint"
+    ],
+    "**/*.+(test.js)": [
+      "jest --findRelatedTests"
     ]
   },
   "keywords": [],
@@ -28,6 +32,8 @@
   "devDependencies": {
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.2.4",
+    "jest": "^27.3.1",
     "lint-staged": "^11.2.6",
     "prettier": "^2.4.1"
   },
