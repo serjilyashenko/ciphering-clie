@@ -10,8 +10,10 @@ pipeline(
   createInputStream(input),
   ...config.split('-').map(createCipherStream),
   createOutputStream(output),
-  () => {
-    process.stderr.write('>> ciphering error')
-    process.exit(1)
+  error => {
+    if (error) {
+      process.stderr.write('>> cipher errro: ', error)
+      process.exit(1)
+    }
   },
 )
