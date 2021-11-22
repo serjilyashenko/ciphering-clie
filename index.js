@@ -1,10 +1,10 @@
 import {pipeline} from 'stream'
-import {programOptions} from './src/program.js'
+import {parseProgramOptions} from './src/program.js'
 import {createCipherStream} from './src/cipher-stream.js'
 import {createInputStream} from './src/input-stream.js'
 import {createOutputStream} from './src/output-stream.js'
 
-const {input, output, config} = programOptions
+const {input, output, config} = parseProgramOptions()
 
 pipeline(
   createInputStream(input),
