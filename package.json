@@ -9,8 +9,8 @@
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|css|html|md)\"",
     "format:check": "prettier --ignore-path .gitignore --list-different \"**/*.+(js|json|css|html|md)\"",
     "lint:check": "eslint --ignore-path .gitignore .",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
-    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "test": "jest --watch",
+    "test:coverage": "jest --coverage",
     "pre-commit-hook": "lint-staged",
     "githook:init": "echo \"#!/bin/sh \n\nnpm run pre-commit-hook \" > .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit",
     "postinstall": "npm run githook:init"
@@ -27,6 +27,9 @@
   "author": "Sergio Ilyashenko",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.16.4",
+    "@babel/preset-env": "^7.16.4",
+    "babel-jest": "^27.3.1",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-jest": "^25.2.4",
